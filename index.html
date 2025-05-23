@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Marriage Anniversary Surprise</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #eee7e9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 18px;
+    }
+    video {
+      max-width: 50%;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+    #page2 {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page 1: Names + Music -->
+  <div id="page1" class="container">
+    <h1> <B>Welcome to Marriage Anniversary surprise!</B> 💖</h1>
+    <p>Enter both of your names to unlock the Surprise!</p>
+    <input type="text" id="name1" placeholder="Your Name" />
+    <input type="text" id="name2" placeholder=" Your Partner Name" />
+    <br>
+    <button onclick="showVideo()">Get Surprise!</button>
+
+    <!-- Background Music -->
+    <audio id="bg-music" autoplay loop>
+      <source src="song.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <!-- Page 2: Video -->
+  <div id="page2" class="container">
+    <h1 id="greeting"></h1>
+    <video id="video" controls >
+      <source src="marriage.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="wishes-container">
+    
+    <p>Wishing you both a lifetime of love and happiness.</p>
+    <p>May your love continue to grow stronger with every passing year.</p>
+    <p>Cheers to another year of laughter, memories, and togetherness.</p>
+    <p><b>with love your Annayya...😊</b></p>
+    <p><em>- siva manjunath</em>❤️</p>
+  </div>
+  
+
+  <script>
+    function showVideo() {
+      const name1 = document.getElementById('name1').value.trim();
+      const name2 = document.getElementById('name2').value.trim();
+      if (!name1 || !name2) {
+        alert('Please enter both names!');
+        return;
+      }
+
+      // Stop and remove audio
+      const bgMusic = document.getElementById('bg-music');
+      bgMusic.pause();
+      bgMusic.currentTime = 0;
+      bgMusic.remove(); // <-- This ensures it stops in all browsers
+
+      // Show greeting
+      document.getElementById('greeting').innerText =
+        `Happy Marriage Anniversary, ${name1} & ${name2}! 💖`;
+        document.getElementById('greeting').style.fontSize = '36px';
+
+      // Switch to video page
+      document.getElementById('page1').style.display = 'none';
+      document.getElementById('page2').style.display = 'block';
+    }
+    document.getElementById('name1').addEventListener('input', function() {
+  this.value = this.value.toUpperCase();
+});
+document.getElementById('name2').addEventListener('input', function() {
+  this.value = this.value.toUpperCase();
+});
+
+  </script>
+  <br>
+    
+
+</body>
+</html>
